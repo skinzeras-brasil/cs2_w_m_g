@@ -1,4 +1,4 @@
-name: Upload .obj Files to Release
+name: Upload .obj and .fbx Files to Release
 
 on:
   release:
@@ -15,5 +15,12 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "models/*.obj"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload arquivos .fbx
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "models_split/*.fbx"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
